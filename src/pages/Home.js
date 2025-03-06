@@ -37,7 +37,7 @@ const Home = () => {
           {/* Botón de redirección */}
           <div style={{ marginTop: '1rem', textAlign: 'center' }}>
             <Link className="button" to="/NuevaPagina">
-              Redirigir
+              Ver el mapa completo
             </Link>
           </div>
         </div>
