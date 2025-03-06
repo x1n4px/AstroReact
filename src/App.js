@@ -1,45 +1,33 @@
 import './App.css';
-import MapaMalaga from './components/MapaMalaga';
-import BarChart from './components/BarChart';
-import RadarChart from './components/RadarChart';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-function App() {
+import Layout from './pages/Layout'
+import Home from './pages/Home';
+import NoPage from './pages/NoPage'
+import NuevaPagina from './pages/NuevaPagina';
+import { BrowserRouter, Routes } from "react-router-dom";
+
+
+
+export default function App() {
+  
   return (
      
-    <div className="app-container">
-      <div className="card">
-        <div className="grid">
-          {/* Fila 1 */}
-          <div className="box">
-            <BarChart />
-          </div>
-          <div className="box">
-            <RadarChart />
-          </div>
-        </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="*" element={<NoPage />} />
+        <Route path="/NuevaPagina" element={<NuevaPagina />} /> 
+      </Route>
+    </Routes>
+  </BrowserRouter>
 
-        <div style={{ marginBottom: '1rem' }}>
-          {/* Fila 2: Mapa */}
-          <div className="map-container">
-            <MapaMalaga />
-          </div>
-        </div>
-
-        <div className="grid">
-          {/* Fila 3 */}
-          <div className="box"></div>
-          <div className="box"></div>
-        </div>
-
-        {/* Botón de redirección */}
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-          <button className="button">
-            Redirigir
-          </button>
-        </div>
-      </div>
-    </div>
+    
   );
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
