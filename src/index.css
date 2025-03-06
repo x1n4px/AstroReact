@@ -80,7 +80,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1e3a8a; /* bg-blue-800 */
+  background-color: #2E86DE; /* bg-blue-800 */
   padding: 1rem;
 }
 
@@ -88,7 +88,7 @@ code {
 .logo {
   width: 24px;
   height: 24px;
-  fill: rgba(5, 102, 247, 1); /* El color del SVG */
+  fill: rgb(2, 51, 124); /* El color del SVG */
   margin-right: 1rem;
 }
 
