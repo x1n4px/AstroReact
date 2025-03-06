@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* index.css */
+
+/* Estilo general para el contenedor principal */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7fafc; /* bg-gray-100 */
+}
+
+/* Estilo para la tarjeta que contiene todo el contenido */
+.card {
+  width: 60%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* Estilo para la cuadrícula */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para las cajas dentro de la cuadrícula */
+.box {
+  background-color: #edf2f7; /* bg-gray-200 */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Estilo para el contenedor del mapa */
+.map-container {
+  width: 100%;
+  height: auto; /* h-96 */
+  background-color: #edf2f7; /* bg-gray-200 */
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* Estilo para el botón de redirección */
+.button {
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2563eb; /* hover:bg-blue-600 */
+}
+
+
+
+/* Estilo para el navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #1e3a8a; /* bg-blue-800 */
+  padding: 1rem;
+}
+
+/* Estilo para el logo (SVG) */
+.logo {
+  width: 24px;
+  height: 24px;
+  fill: rgba(5, 102, 247, 1); /* El color del SVG */
+  margin-right: 1rem;
+}
+
+/* Estilo para el título */
+.title {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+}
