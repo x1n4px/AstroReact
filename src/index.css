@@ -27,8 +27,8 @@ code {
 /* Estilo para la tarjeta que contiene todo el contenido */
 .card {
   width: 60%;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f7fafc; /* bg-gray-100 */
+
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -43,9 +43,11 @@ code {
 
 /* Estilo para las cajas dentro de la cuadrícula */
 .box {
-  background-color: #edf2f7; /* bg-gray-200 */
+  background-color: white; /* bg-gray-200 */
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Estilo para el contenedor del mapa */
