@@ -39,7 +39,7 @@ const Navbar = () => {
       </Link>
 
       {/* Opcional: Agregar un botón de menú o enlaces adicionales en el navbar */}
-      {/* <div
+      <div
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -48,7 +48,7 @@ const Navbar = () => {
         }}
       >
         <Link
-          to="/about"
+          to="/station"
           style={{
             color: 'white',
             fontWeight: '500',
@@ -61,9 +61,9 @@ const Navbar = () => {
           onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
           onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
         >
-          About
+          Estaciones
         </Link>
-        <Link
+        {/* <Link
           to="/contact"
           style={{
             color: 'white',
@@ -78,8 +78,8 @@ const Navbar = () => {
           onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
         >
           Contact
-        </Link>
-      </div> */}
+        </Link> */}
+      </div>
     </nav>
   );
 };

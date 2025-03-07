@@ -1,17 +1,26 @@
-
-
 import { useNavigate } from "react-router-dom";
 
-import React, { act } from 'react';
+import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-
-
 
 const MapChart = ({ data, activePopUp, lat = 36.7213, lon = -4.4216 , zoom = 11 }) => {
 
     const navigate = useNavigate();
 
+    // Función para determinar el color del marcador según el estado
+    const getMarkerColor = (state) => {
+        switch (state) {
+            case 0:
+                return '/map-green.png';  // Verde para state = 0
+            case 1:
+                return '/map-red.png';    // Rojo para state = 1
+            case 2:
+                return '/map-yellow.png';   // Azul para state = 2
+            default:
+                return 'gray';   // Color por defecto
+        }
+    };
 
     return (
         <MapContainer center={[lat, lon]} zoom={[zoom]} style={{ width: '100%', height: '800px' }}>
@@ -25,30 +34,21 @@ const MapChart = ({ data, activePopUp, lat = 36.7213, lon = -4.4216 , zoom = 11 
                 <Marker
                     key={index}
                     position={[punto.lat, punto.lon]}
-                    icon={new L.Icon({ iconUrl: 'https://cdn-icons-png.flaticon.com/512/252/252025.png', iconSize: [25, 25] })}
+                    icon={new L.Icon({
+                        iconUrl: `${getMarkerColor(punto.state)}`,
+                        iconSize: [25, 25],
+                        iconColor: getMarkerColor(punto.state)  // Cambiar el color del icono según el estado
+                    })}
                 >
                     {activePopUp && (
                         <Popup>
                             <div>
                                 <p>{punto.title}</p>
-                                <button
-                                    onClick={() => navigate(`/bolide/${punto.id}`)}
-                                    style={{
-                                        backgroundColor: '#4CAF50',
-                                        color: 'white',
-                                        padding: '5px 10px',
-                                        borderRadius: '5px',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                    }}
-                                >
-                                    Ver detalles
-                                </button>
+                                <p>{punto.lat}, {punto.lon}</p>
                             </div>
                         </Popup>
                     )}
                 </Marker>
-
             ))}
         </MapContainer>
     );

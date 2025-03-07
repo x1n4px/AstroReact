@@ -3,7 +3,6 @@ import MapChart from "../components/chart/MapChart";
 
 const IndividualBolide = () => {
     const { id } = useParams();
-    console.log(id)
     const data = [
         { id: 1, lat: 36.7213, lon: -4.4216, title: 'Punto 1 (Málaga)' },
         { id: 2, lat: 36.7741, lon: -4.4280, title: 'Punto 2 (Málaga)' },
