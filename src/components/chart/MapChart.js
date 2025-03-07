@@ -8,7 +8,7 @@ import L from 'leaflet';
 
 
 
-const MapChart = ({ data, activePopUp, lat = 36.7213, lon = -4.4216 , zoom = 11 }) => {
+const MapChart = ({ data, activePopUp, lat = 40.4165, lon = -3.70256 , zoom = 11 }) => {
 
     const navigate = useNavigate();
 

@@ -14,9 +14,9 @@ const MapChart = ({ data, activePopUp, lat = 36.7213, lon = -4.4216 , zoom = 11 
             case 0:
                 return '/map-green.png';  // Verde para state = 0
             case 1:
-                return '/map-red.png';    // Rojo para state = 1
+                return '/map-yellow.png';    // Rojo para state = 1
             case 2:
-                return '/map-yellow.png';   // Azul para state = 2
+                return '/map-blue.png';   // Azul para state = 2
             default:
                 return 'gray';   // Color por defecto
         }

@@ -4,6 +4,7 @@ import BarChart from '../components/BarChart';
 import RadarChart from '../components/RadarChart';
 import '../index.css';
 import { Link } from "react-router-dom";
+import { Container } from 'react-bootstrap'
 
 
 const Home = () => {
@@ -37,18 +38,17 @@ const Home = () => {
 
 
 
-        <div className="grid">
-          {/* Fila 3 */}
+        {/* <div className="grid">
           <div className="box"></div>
           <div className="box"></div>
-        </div>
+        </div> */}
 
         {/* Botón de redirección */}
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+        {/* <div style={{ marginTop: '1rem', textAlign: 'center' }}>
           <Link className="button" to="/NuevaPagina">
             Ver el mapa completo
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

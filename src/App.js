@@ -15,13 +15,12 @@ import Station from './pages/Station'
 export default function App() {
 
   return (
-
+   
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NoPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-
           <Route path="/NuevaPagina" element={<NuevaPagina />} />
           <Route path="/bolide-graph" element={<BarChartInfo />} />
           <Route path="/bolide/:id" element={<IndividualBolide />} />

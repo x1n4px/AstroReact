@@ -251,32 +251,55 @@ const Station = () => {
             </h1>
 
             <p style={{ fontSize: '1.2rem', marginBottom: '20px', textAlign: 'center' }}>
-                A continuación se muestran las estaciones espaciales activas, en construcción y en colaboración.
+            La Red de detección de Bólidos y Meteoros de la Universidad de Málaga y de la Sociedad Malagueña de Astronomía está distribuida en veintisiete ubicaciones del territorio español. Consta a fecha de hoy de veintiuna estaciones en funcionamiento y otras siete en proceso de instalación, además de utilizar las cámaras allsky de la Red Global BOOTES (IAA/CSIC). En todas ellas se ejecuta un software de producción propia, tanto para el control de la instrumentación como para el procesado de imágenes e identificación de meteoros.
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                <StationMapChart data={stations} activePopUp={true} lat={40.415417} lon={-3.695642} zoom={3} />
+                <StationMapChart data={stations} activePopUp={true} lat={40.415417} lon={-3.695642} zoom={4} />
             </div>
 
             <h2 style={{ fontSize: '1.5rem', marginBottom: '15px', textAlign: 'center' }}>
                 Lista de Estaciones
             </h2>
 
-            <ul className="space-y-4">
-                {stations.map(station => (
-                    <li key={station.id} className="flex justify-between items-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition">
-                        <div>
-                            <span className="text-xl font-semibold text-gray-700">{station.title}</span>
-                        </div>
-                        <span 
-                            className={`px-4 py-2 rounded-full text-white font-semibold 
-                                ${station.state === 0 ? 'bg-green-500' : station.state === 1 ? 'bg-red-500' : 'bg-blue-500'}`}
-                        >
-                            {station.state === 0 ? 'Activo' : station.state === 1 ? 'En construcción' : 'Colaboración'}
-                        </span>
-                    </li>
-                ))}
-            </ul>
+            <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
+    {stations.map(station => (
+        <li key={station.id} style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '12px',
+            backgroundColor: '#fff',
+            borderRadius: '8px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            marginBottom: '10px',
+            fontSize: '1.1rem'
+        }}>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+            }}>
+                <span style={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    backgroundColor: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
+                    marginRight: '10px'
+                }}></span>
+                <span style={{ fontWeight: 'bold', color: '#333' }}>{station.title}</span>
+            </div>
+            <span style={{
+                color: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
+                fontWeight: 'bold',
+                fontSize: '1rem',
+                textTransform: 'capitalize'
+            }}>
+                {station.state === 0 ? 'Activo' : station.state === 1 ? 'En construcción' : 'Colaboración'}
+            </span>
+        </li>
+    ))}
+</ul>
+
         </div>
     );
 

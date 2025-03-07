@@ -64,7 +64,7 @@ const Navbar = () => {
           Estaciones
         </Link>
         {/* <Link
-          to="/contact"
+          to="/videos"
           style={{
             color: 'white',
             fontWeight: '500',
@@ -77,7 +77,7 @@ const Navbar = () => {
           onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
           onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
         >
-          Contact
+          Videos
         </Link> */}
       </div>
     </nav>

@@ -427,30 +427,44 @@ const BarChart = ({showTable = false}) => {
 
 
       {showTable && selectedData && (
-        <div style={{ marginTop: '30px' }}>
+        <div style={{ marginTop: '30px', paddingBottom: '100px' }}>
           <h3>Detalles del mes: {selectedData.month}</h3>
-          <table border="1" style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Fecha</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-              </tr>
-            </thead>
-            <tbody>
-              {selectedData.data.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.id}</td>
-                  <td>{item.title}</td>
-                  <td>{item.date}</td>
-                  <td>{item.lat}</td>
-                  <td>{item.lon}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <table style={{
+    width: '100%',
+    borderCollapse: 'collapse',
+    margin: '20px 0',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+}}>
+    <thead>
+        <tr style={{
+            backgroundColor: '#007bff',
+            color: 'white',
+            textAlign: 'left',
+            padding: '12px 15px',
+        }}>
+            <th style={{ padding: '12px 15px' }}>ID</th>
+            <th style={{ padding: '12px 15px' }}>Título</th>
+            <th style={{ padding: '12px 15px' }}>Fecha</th>
+            <th style={{ padding: '12px 15px' }}>Latitud</th>
+            <th style={{ padding: '12px 15px' }}>Longitud</th>
+        </tr>
+    </thead>
+    <tbody>
+        {selectedData.data.map((item) => (
+            <tr key={item.id} style={{
+                borderBottom: '1px solid #ddd',
+                transition: 'background-color 0.3s ease',
+            }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}>
+                <td style={{ padding: '10px 15px' }}>{item.id}</td>
+                <td style={{ padding: '10px 15px' }}>{item.title}</td>
+                <td style={{ padding: '10px 15px' }}>{item.date}</td>
+                <td style={{ padding: '10px 15px' }}>{item.lat}</td>
+                <td style={{ padding: '10px 15px' }}>{item.lon}</td>
+            </tr>
+        ))}
+    </tbody>
+</table>
+
         </div>
       )}
     </div>
