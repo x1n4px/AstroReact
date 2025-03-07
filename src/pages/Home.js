@@ -17,7 +17,7 @@ const Home = () => {
           <div className="box">
             <BarChart showTable={false} />
             <Link className="button" to="/bolide-graph">
-              Ver el gráfico completo
+              Ver más detalles
             </Link>
           </div>
 
