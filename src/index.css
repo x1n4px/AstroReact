@@ -186,7 +186,7 @@ code {
     font-size: 14px;
     /* Reduce aún más el tamaño del texto en pantallas muy pequeñas */
     top: 5px;
-    left: 55px;
+    left: 5%;
   }
 
   .box {
