@@ -271,7 +271,7 @@ const Station = () => {
             padding: '12px',
             backgroundColor: '#fff',
             borderRadius: '8px',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 2px 3px rgba(0, 0, 0, 0.1)',
             marginBottom: '10px',
             fontSize: '1.1rem'
         }}>
