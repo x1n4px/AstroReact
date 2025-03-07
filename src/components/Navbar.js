@@ -47,6 +47,23 @@ const Navbar = () => {
           gap: '1rem',
         }}
       >
+
+        <Link
+          to="/"
+          style={{
+            color: 'white',
+            fontWeight: '500',
+            fontSize: '1rem',
+            textDecoration: 'none',
+            padding: '0.5rem 1rem',
+            borderRadius: '5px',
+            transition: 'background-color 0.3s ease',
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
+          onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+        >
+          Inicio
+        </Link>
         <Link
           to="/station"
           style={{
