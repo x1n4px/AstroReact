@@ -1,3 +1,15 @@
+:root {
+  --box-bg-color: #f9f9f9;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --button-bg-color: #007bff;
+  --button-bg-hover: #0056b3;
+  --button-padding: 10px 20px;
+  --button-font-size: 16px;
+  --button-radius: 5px;
+  --button-margin-bottom: 12px;
+  /* Margen sobre el borde inferior */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,7 +24,6 @@ code {
     monospace;
 }
 
-
 /* index.css */
 
 /* Estilo general para el contenedor principal */
@@ -21,14 +32,15 @@ code {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f7fafc; /* bg-gray-100 */
+  background-color: #f7fafc;
+  /* bg-gray-100 */
 }
 
 /* Estilo para la tarjeta que contiene todo el contenido */
 .card {
-  width: 60%;
-  background-color: #f7fafc; /* bg-gray-100 */
-
+  width: 80%;
+  background-color: #f7fafc;
+  /* bg-gray-100 */
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -43,58 +55,155 @@ code {
 
 /* Estilo para las cajas dentro de la cuadrícula */
 .box {
-  background-color: white; /* bg-gray-200 */
-  height: auto;
+  background-color: white;
+  /* bg-gray-200 */
+  height: 500px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Espacio entre los elementos */
+  align-items: center;
 }
 
 /* Estilo para el contenedor del mapa */
 .map-container {
   width: 100%;
-  height: auto; /* h-96 */
-  background-color: #edf2f7; /* bg-gray-200 */
+  height: auto;
+  /* h-96 */
+  background-color: #edf2f7;
+  /* bg-gray-200 */
   border-radius: 8px;
-  padding: 0.5rem;
+
+  position: relative;
 }
 
 /* Estilo para el botón de redirección */
 .button {
-  background-color: #3b82f6; /* bg-blue-500 */
+  margin-top: auto;
+  /* Empuja el botón hacia la parte inferior */
+  margin-bottom: var(--button-margin-bottom);
+  padding: var(--button-padding);
+  background-color: var(--button-bg-color);
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  text-decoration: none;
+  border-radius: var(--button-radius);
+  font-size: var(--button-font-size);
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #2563eb; /* hover:bg-blue-600 */
+  background-color: #2563eb;
+  /* hover:bg-blue-600 */
 }
 
-
-
-/* Estilo para el navbar */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #2E86DE; /* bg-blue-800 */
-  padding: 1rem;
-}
-
-/* Estilo para el logo (SVG) */
-.logo {
-  width: 24px;
-  height: 24px;
-  fill: rgb(2, 51, 124); /* El color del SVG */
-  margin-right: 1rem;
-}
-
-/* Estilo para el título */
-.title {
-  font-size: 1.5rem;
-  color: white;
+/* Título del mapa */
+.map-title {
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  font-size: 20px;
+  /* Tamaño del texto */
   font-weight: bold;
+  color: #333;
+  /* Color del texto */
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Fondo semitransparente para legibilidad */
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 9999;
+  /* Asegura que el título esté por encima del mapa */
+}
+
+ 
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .card {
+    width: 90%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    /* Una sola columna para pantallas más pequeñas */
+  }
+
+  .map-title {
+    font-size: 18px;
+    /* Reduce el tamaño del texto en pantallas más pequeñas */
+    top: 10px;
+    left: 80px;
+  }
+
+  .box {
+    height: 400px;
+    /* Ajusta la altura de las cajas para pantallas más pequeñas */
+  }
+
+  .map-container {
+    height: 250px;
+    /* Ajusta la altura del mapa */
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .map-title {
+    font-size: 16px;
+    top: 5px;
+    left: 60px;
+  }
+
+  .box {
+    height: 500px;
+    /* Ajusta aún más las cajas para pantallas pequeñas */
+  }
+
+
+  .map-container {
+    height: 600px;
+    /* Ajusta la altura del mapa */
+    overflow: hidden;
+  }
+
+  .button {
+    font-size: 14px;
+    /* Reduce el tamaño del texto del botón */
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 0.5rem;
+  }
+
+  .map-title {
+    font-size: 14px;
+    /* Reduce aún más el tamaño del texto en pantallas muy pequeñas */
+    top: 5px;
+    left: 55px;
+  }
+
+  .box {
+    height: 350px;
+    /* Ajusta la altura de las cajas */
+  }
+
+
+  .map-container {
+    height: 400px;
+    /* Ajusta la altura del mapa */
+    overflow: hidden;
+  }
+
+  .button {
+    font-size: 12px;
+    /* Reduce aún más el tamaño del texto del botón */
+    padding: 6px 12px;
+  }
 }
