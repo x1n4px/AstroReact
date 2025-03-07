@@ -33,8 +33,13 @@ const Home = () => {
 
           <div className="map-container">
             <MapaMalaga />
+            
           </div>
+          <p className="map-description">
+              Haciendo click en cualquiera de los puntos marcados, podrá ver más información al respecto
+            </p>
         </div>
+
 
 
 

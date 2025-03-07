@@ -100,6 +100,23 @@ code {
   /* hover:bg-blue-600 */
 }
 
+.map-description {
+  font-size: 1rem; /* Ajusta el tamaño de la fuente */
+  color: #555; /* Color gris oscuro para el texto */
+  text-align: center; /* Centrar el texto */
+  margin-top: 1rem; /* Espaciado superior */
+  font-weight: 300; /* Fuente ligera */
+  line-height: 1.5; /* Interlineado para mayor legibilidad */
+  padding: 0.5rem; /* Un pequeño padding para dar espacio alrededor */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 80%; /* Asegurarse de que no ocupe todo el ancho */
+  margin-left: auto; /* Centrar el párrafo */
+  margin-right: auto; /* Centrar el párrafo */
+}
+
+
 /* Título del mapa */
 .map-title {
   position: absolute;

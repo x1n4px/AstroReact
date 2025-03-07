@@ -1,6 +1,7 @@
 
 
 import StationMapChart from '../components/chart/StationMapChart'
+import React, { useState } from 'react';
 
 
 const Station = () => {
@@ -241,7 +242,25 @@ const Station = () => {
             state: 2
         }
     ];
-    
+
+    // Estado para lat, lon y zoom
+    const [lat, setDato1] = useState(40.415417); // Valor inicial para lat
+    const [lon, setDato2] = useState(-3.695642); // Valor inicial para lon
+    const [zoom, setDato3] = useState(6); // Valor inicial para zoom
+
+    // Función para actualizar los valores de lat, lon y zoom
+    const cambiarDato = (lat2, lon2, zoom) => {
+        setDato1(lat2);  // Actualiza lat
+        setDato2(lon2);  // Actualiza lon
+        setDato3(zoom);  // Actualiza zoom
+
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    };
+
+    const mapKey = `${lat}-${lon}-${zoom}`;
 
 
     return (
@@ -251,11 +270,19 @@ const Station = () => {
             </h1>
 
             <p style={{ fontSize: '1.2rem', marginBottom: '20px', textAlign: 'center' }}>
-            La Red de detección de Bólidos y Meteoros de la Universidad de Málaga y de la Sociedad Malagueña de Astronomía está distribuida en veintisiete ubicaciones del territorio español. Consta a fecha de hoy de veintiuna estaciones en funcionamiento y otras siete en proceso de instalación, además de utilizar las cámaras allsky de la Red Global BOOTES (IAA/CSIC). En todas ellas se ejecuta un software de producción propia, tanto para el control de la instrumentación como para el procesado de imágenes e identificación de meteoros.
+                La Red de detección de Bólidos y Meteoros de la Universidad de Málaga...
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                <StationMapChart data={stations} activePopUp={true} lat={40.415417} lon={-3.695642} zoom={4} />
+                {/* Este componente se recargará con los valores de lat, lon y zoom actualizados */}
+                <StationMapChart
+                    key={mapKey}
+                    data={stations}
+                    activePopUp={true}
+                    lat={lat}
+                    lon={lon}
+                    zoom={zoom}
+                />
             </div>
 
             <h2 style={{ fontSize: '1.5rem', marginBottom: '15px', textAlign: 'center' }}>
@@ -263,42 +290,43 @@ const Station = () => {
             </h2>
 
             <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
-    {stations.map(station => (
-        <li key={station.id} style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '12px',
-            backgroundColor: '#fff',
-            borderRadius: '8px',
-            boxShadow: '0 2px 3px rgba(0, 0, 0, 0.1)',
-            marginBottom: '10px',
-            fontSize: '1.1rem'
-        }}>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-            }}>
-                <span style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
-                    backgroundColor: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
-                    marginRight: '10px'
-                }}></span>
-                <span style={{ fontWeight: 'bold', color: '#333' }}>{station.title}</span>
-            </div>
-            <span style={{
-                color: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
-                fontWeight: 'bold',
-                fontSize: '1rem',
-                textTransform: 'capitalize'
-            }}>
-                {station.state === 0 ? 'Activo' : station.state === 1 ? 'En construcción' : 'Colaboración'}
-            </span>
-        </li>
-    ))}
-</ul>
+                {stations.map(station => (
+                    <li key={station.id} style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        padding: '12px',
+                        backgroundColor: '#fff',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 3px rgba(0, 0, 0, 0.1)',
+                        marginBottom: '10px',
+                        fontSize: '1.1rem'
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}>
+                            <span style={{
+                                width: '12px',
+                                height: '12px',
+                                borderRadius: '50%',
+                                backgroundColor: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
+                                marginRight: '10px'
+                            }}></span>
+                            <span style={{ fontWeight: 'bold', color: '#333' }}>{station.title}</span>
+                        </div>
+                        <span style={{
+                            color: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
+                            fontWeight: 'bold',
+                            fontSize: '1rem',
+                            textTransform: 'capitalize'
+                        }}>
+                            {station.state === 0 ? 'Activo' : station.state === 1 ? 'En construcción' : 'Colaboración'}
+                        </span>
+                        <button onClick={() => cambiarDato(station.lat, station.lon, 10)}>Ver</button>
+                    </li>
+                ))}
+            </ul>
 
         </div>
     );
