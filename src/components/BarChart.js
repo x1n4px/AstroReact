@@ -420,6 +420,14 @@ const BarChart = ({showTable = false}) => {
     },
   };
 
+    const formatearFecha = (fecha) => {
+      const opciones = { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' };
+      const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', opciones);
+      
+      return fechaFormateada.replace(',', '').replace(/(\d{2})\/(\d{2})\/(\d{4})/, '$1/$2/$3');
+    };
+   
+
   return (
     <div style={{ width: '80%', margin: '0 auto', paddingTop: '50px', height: '500px' }}>
       <h2>Gráfico de Bólidos</h2>
@@ -457,7 +465,7 @@ const BarChart = ({showTable = false}) => {
             }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}>
                 <td style={{ padding: '10px 15px' }}>{item.id}</td>
                 <td style={{ padding: '10px 15px' }}>{item.title}</td>
-                <td style={{ padding: '10px 15px' }}>{item.date}</td>
+                <td style={{ padding: '10px 15px' }}>{formatearFecha(item.date)}</td>
                 <td style={{ padding: '10px 15px' }}>{item.lat}</td>
                 <td style={{ padding: '10px 15px' }}>{item.lon}</td>
             </tr>
