@@ -59,6 +59,7 @@ code {
 .box {
   background-color: white;
   /* bg-gray-200 */
+  width: auto;
   height: 500px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -67,7 +68,15 @@ code {
   justify-content: space-between;
   /* Espacio entre los elementos */
   align-items: center;
+  overflow: hidden;
 }
+
+.close-box {
+  height: 80%;
+  width: 90%;
+
+}
+
 
 /* Estilo para el contenedor del mapa */
 .map-container {

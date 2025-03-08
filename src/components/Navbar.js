@@ -65,7 +65,7 @@ const Navbar = () => {
           Inicio
         </Link>
         <Link
-          to="/station"
+          to="/estaciones"
           style={{
             color: 'white',
             fontWeight: '500',

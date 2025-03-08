@@ -11,6 +11,7 @@ import NuevaPagina from './pages/NuevaPagina';
 import IndividualBolide from './pages/IndividualBolide'
 import BarChartInfo from './pages/BarChartInfo';
 import Station from './pages/Station'
+import ComparationBolide from './pages/ComparationBolide';
 
 export default function App() {
 
@@ -24,7 +25,8 @@ export default function App() {
           <Route path="/NuevaPagina" element={<NuevaPagina />} />
           <Route path="/bolide-graph" element={<BarChartInfo />} />
           <Route path="/bolide/:id" element={<IndividualBolide />} />
-        <Route path="/station" element={<Station />} />
+          <Route path="/comparacion-bolidos" element={<ComparationBolide />} />
+        <Route path="/estaciones" element={<Station />} />
         </Route>
       </Routes>
     </BrowserRouter>
