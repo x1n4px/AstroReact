@@ -1,104 +1,29 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar as BootstrapNavbar, Nav, Container } from 'react-bootstrap';
 
 const Navbar = () => {
-  return (
-    <nav
-      style={{
-        backgroundColor: '#007bff',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '1rem 2rem',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          style={{ fill: 'white', marginRight: '10px' }}
-        >
-          <path
-            d="M2.002 9.63c-.023.411.207.794.581.966l7.504 3.442 3.442 7.503c.164.356.52.583.909.583l.057-.002a1 1 0 0 0 .894-.686l5.595-17.032c.117-.358.023-.753-.243-1.02s-.66-.358-1.02-.243L2.688 8.736a1 1 0 0 0-.686.894zm16.464-3.971-4.182 12.73-2.534-5.522a.998.998 0 0 0-.492-.492L5.734 9.841l12.732-4.182z"
-          ></path>
-        </svg>
+    const [expanded, setExpanded] = useState(false);
 
-        <span
-          style={{
-            color: 'white',
-            fontWeight: '600',
-            fontSize: '1.5rem',
-            textTransform: 'uppercase',
-          }}
-        >
-          AstroExample
-        </span>
-      </Link>
-
-      {/* Opcional: Agregar un botón de menú o enlaces adicionales en el navbar */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '1rem',
-        }}
-      >
-
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            fontWeight: '500',
-            fontSize: '1rem',
-            textDecoration: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-        >
-          Inicio
-        </Link>
-        <Link
-          to="/estaciones"
-          style={{
-            color: 'white',
-            fontWeight: '500',
-            fontSize: '1rem',
-            textDecoration: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-        >
-          Estaciones
-        </Link>
-        {/* <Link
-          to="/videos"
-          style={{
-            color: 'white',
-            fontWeight: '500',
-            fontSize: '1rem',
-            textDecoration: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '5px',
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#0056b3'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-        >
-          Videos
-        </Link> */}
-      </div>
-    </nav>
-  );
+    return (
+        <BootstrapNavbar bg="primary" variant="dark" expand="lg" expanded={expanded}>
+            <Container>
+                <BootstrapNavbar.Brand as={Link} to="/" className="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{ fill: "rgba(255, 255, 255, 1)", marginRight: "0.5rem" }}>
+                        <path d="M20.92 2.38A15.72 15.72 0 0 0 17.5 2a8.26 8.26 0 0 0-6 2.06Q9.89 5.67 8.31 7.27c-1.21-.13-4.08-.2-6 1.74a1 1 0 0 0 0 1.41l11.3 11.32a1 1 0 0 0 1.41 0c1.95-2 1.89-4.82 1.77-6l3.21-3.2c3.19-3.19 1.74-9.18 1.68-9.43a1 1 0 0 0-.76-.73zm-2.36 8.75L15 14.67a1 1 0 0 0-.27.9 6.81 6.81 0 0 1-.54 3.94L4.52 9.82a6.67 6.67 0 0 1 4-.5A1 1 0 0 0 9.39 9s1.4-1.45 3.51-3.56A6.61 6.61 0 0 1 17.5 4a14.51 14.51 0 0 1 2.33.2c.24 1.43.62 5.04-1.27 6.93z"></path><circle cx="15.73" cy="8.3" r="2"></circle><path d="M5 16c-2 1-2 5-2 5a7.81 7.81 0 0 0 5-2z"></path></svg>
+                        <span className="font-weight-bold text-uppercase" style={{ fontSize: '1.5rem' }}>AstroExample</span>
+                    </BootstrapNavbar.Brand>
+                    <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")} />
+                    <BootstrapNavbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="ms-auto">
+                            <Nav.Link as={Link} to="/" onClick={() => setExpanded(false)} style={{ color: 'lightblue' }}>Inicio</Nav.Link>
+                            <Nav.Link as={Link} to="/estaciones" onClick={() => setExpanded(false)} style={{ color: 'lightblue' }}>Estaciones</Nav.Link>
+                            {/* <Nav.Link as={Link} to="/videos" onClick={() => setExpanded(false)} style={{ color: 'lightblue' }}>Videos</Nav.Link> */}
+                        </Nav>
+                    </BootstrapNavbar.Collapse>
+                </Container>
+            </BootstrapNavbar>
+    );
 };
 
 export default Navbar;

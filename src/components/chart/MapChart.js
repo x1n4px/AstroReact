@@ -14,7 +14,7 @@ const MapChart = ({ data, activePopUp, lat = 40.4165, lon = -3.70256 , zoom = 11
 
 
     return (
-        <MapContainer center={[lat, lon]} zoom={[zoom]} style={{ width: '100%', height: '800px' }}>
+        <MapContainer center={[lat, lon]} zoom={[zoom]} style={{ width: '100%', height: '800px' }} >
             {/* Capa base del mapa (Mapa de OpenStreetMap) */}
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

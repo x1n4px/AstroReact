@@ -39,11 +39,10 @@ code {
 }
 
 /* Estilo para la tarjeta que contiene todo el contenido */
-.card {
+.cardx {
   width: 80%;
-  background-color: #f7fafc;
-  /* bg-gray-100 */
   border-radius: 8px;
+  border: none;
   padding: 1.5rem;
 }
 

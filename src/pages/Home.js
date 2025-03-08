@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
+import '../index.css';
+
 // Componentes
 import MapaMalaga from '../components/MapaMalaga';
 import BarChart from '../components/BarChart';
 import RadarChart from '../components/chart/RadarChart';
-import '../index.css';
-import { Link } from "react-router-dom";
-import { Container } from 'react-bootstrap'
 import BrushableScatterplot from '../components/chart/BushableScatterplot';
+import LinkMap from '../components/chart/LinkMap'
 
 const Home = () => {
 
@@ -69,10 +70,41 @@ const Home = () => {
     { nombre: 'Bólido B', a: 3.2, e: 0.5, i: 10, Omega: 60, w: 140 }
   ]
 
+  const data = [
+    {
+      "id": 1,
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "title": "Punto 1 (Madrid)",
+      "date": "Tue Oct 27 2020 10:15:23 GMT+0100 (Central European Standard Time)",
+      "video": ""
+    },
+    {
+      "id": 2,
+      "lat": 40.4168,
+      "lon": -2.2038,
+      "title": "Punto 2 (Barcelona)",
+      "date": "Wed Mar 15 2017 14:28:57 GMT+0100 (Central European Standard Time)",
+      "video": ""
+    },
+    {
+      "id": 3,
+      "lat": 40.4168,
+      "lon": -4.9038,
+      "title": "Punto 2 (Barcelona)",
+      "date": "Wed Mar 15 2017 14:28:57 GMT+0100 (Central European Standard Time)",
+      "video": ""
+    }
+  ]
+
 
   return (
     <div className="app-container">
-      <div className="card">
+      <div className="cardx">
+
+        <div className="box2" style={{ marginBottom: '1rem', position: 'relative', overflow: 'hidden' }}>
+        </div>
+
         <div className="grid">
           {/* Fila 1 */}
           <div className="box">
@@ -112,8 +144,11 @@ const Home = () => {
               <BrushableScatterplot data={puntosLocales} />
             </div>
           </div>
-          <div className="box">
-
+          <div className="box" style={{ marginBottom: '1rem', position: 'relative', overflow: 'hidden' }}>
+            <div className="map-title absolute top-10 left-0 z-10">
+             Último bólido registrado
+            </div>
+            <LinkMap data={data} />
           </div>
         </div>
 
