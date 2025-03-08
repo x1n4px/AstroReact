@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
-const MapChart = ({ data, activePopUp }) => {
+const MapChart = ({ data, activePopUp = true }) => {
     const navigate = useNavigate();
 
     // Calcular el punto medio y el zoom usando useMemo
@@ -48,7 +48,7 @@ const MapChart = ({ data, activePopUp }) => {
     const polylinePoints = data.map((punto) => [punto.lat, punto.lon]);
 
     return (
-        <MapContainer center={[centerLat, centerLon]} zoom={zoom} style={{ width: '100%', height: '800px' }}>
+        <MapContainer center={[centerLat, centerLon]} zoom={zoom} style={{ width: '100%', height: '500px' }} scrollWheelZoom={false} >
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -67,20 +67,9 @@ const MapChart = ({ data, activePopUp }) => {
                     {activePopUp && (
                         <Popup>
                             <div>
-                                <p>{punto.title}</p>
-                                <button
-                                    onClick={() => navigate(`/bolide/${punto.id}`)}
-                                    style={{
-                                        backgroundColor: '#4CAF50',
-                                        color: 'white',
-                                        padding: '5px 10px',
-                                        borderRadius: '5px',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                    }}
-                                >
-                                    Ver detalles
-                                </button>
+                                <p>Altura: {punto.height}km</p>
+                               
+                                 
                             </div>
                         </Popup>
                     )}

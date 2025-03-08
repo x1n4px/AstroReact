@@ -50,6 +50,8 @@ const MapChart = ({ data, activePopUp, lat = 40.4165, lon = -3.70256 , zoom = 11
                 </Marker>
 
             ))}
+
+            
         </MapContainer>
     );
 }

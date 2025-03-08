@@ -86,14 +86,6 @@ const Home = () => {
       "title": "Punto 2 (Barcelona)",
       "date": "Wed Mar 15 2017 14:28:57 GMT+0100 (Central European Standard Time)",
       "video": ""
-    },
-    {
-      "id": 3,
-      "lat": 40.4168,
-      "lon": -4.9038,
-      "title": "Punto 2 (Barcelona)",
-      "date": "Wed Mar 15 2017 14:28:57 GMT+0100 (Central European Standard Time)",
-      "video": ""
     }
   ]
 
@@ -149,6 +141,9 @@ const Home = () => {
              Último bólido registrado
             </div>
             <LinkMap data={data} />
+            <Link className="button" to="/informe-bolido">
+              Ver informe completo
+            </Link>
           </div>
         </div>
 

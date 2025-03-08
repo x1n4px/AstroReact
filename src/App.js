@@ -7,11 +7,11 @@ import { BrowserRouter, Routes } from "react-router-dom";
 import Layout from './pages/Layout'
 import Home from './pages/Home';
 import NoPage from './pages/NoPage'
-import NuevaPagina from './pages/NuevaPagina';
 import IndividualBolide from './pages/IndividualBolide'
 import BarChartInfo from './pages/BarChartInfo';
 import Station from './pages/Station'
 import ComparationBolide from './pages/ComparationBolide';
+import InformeZ from './pages/InformeZ';
 
 export default function App() {
 
@@ -22,10 +22,10 @@ export default function App() {
         <Route path="*" element={<NoPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/NuevaPagina" element={<NuevaPagina />} />
           <Route path="/bolide-graph" element={<BarChartInfo />} />
           <Route path="/bolide/:id" element={<IndividualBolide />} />
           <Route path="/comparacion-bolidos" element={<ComparationBolide />} />
+          <Route path="/informe-bolido" element={<InformeZ />} />
         <Route path="/estaciones" element={<Station />} />
         </Route>
       </Routes>

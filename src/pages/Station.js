@@ -2,6 +2,7 @@
 
 import StationMapChart from '../components/chart/StationMapChart'
 import React, { useState } from 'react';
+import { Button, ListGroup, Badge } from 'react-bootstrap';
 
 
 const Station = () => {
@@ -289,44 +290,28 @@ const Station = () => {
                 Lista de Estaciones
             </h2>
 
-            <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
-                {stations.map(station => (
-                    <li key={station.id} style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        padding: '12px',
-                        backgroundColor: '#fff',
-                        borderRadius: '8px',
-                        boxShadow: '0 2px 3px rgba(0, 0, 0, 0.1)',
-                        marginBottom: '10px',
-                        fontSize: '1.1rem'
-                    }}>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                        }}>
-                            <span style={{
-                                width: '12px',
-                                height: '12px',
-                                borderRadius: '50%',
-                                backgroundColor: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
-                                marginRight: '10px'
-                            }}></span>
-                            <span style={{ fontWeight: 'bold', color: '#333' }}>{station.title}</span>
-                        </div>
-                        <span style={{
-                            color: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue',
-                            fontWeight: 'bold',
-                            fontSize: '1rem',
-                            textTransform: 'capitalize'
-                        }}>
+            <ListGroup>
+            {stations.map(station => (
+                <ListGroup.Item key={station.id} className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex align-items-center flex-grow-1"> {/* Añadido flex-grow-1 */}
+                        <span className="rounded-circle me-2" style={{
+                            width: '12px',
+                            height: '12px',
+                            backgroundColor: station.state === 0 ? 'green' : station.state === 1 ? 'orange' : 'blue'
+                        }}></span>
+                        <span className="fw-bold">{station.title}</span>
+                    </div>
+                    <div className="text-center" style={{ minWidth: '150px' }}> {/* Añadido minWidth */}
+                        <Badge bg={station.state === 0 ? 'success' : station.state === 1 ? 'warning' : 'primary'} className="text-capitalize">
                             {station.state === 0 ? 'Activo' : station.state === 1 ? 'En construcción' : 'Colaboración'}
-                        </span>
-                        <button onClick={() => cambiarDato(station.lat, station.lon, 10)}>Ver</button>
-                    </li>
-                ))}
-            </ul>
+                        </Badge>
+                    </div>
+                    <Button variant="outline-primary" size="sm" onClick={() => cambiarDato(station.lat, station.lon, 10)}>
+                         Ver en mapa
+                    </Button>
+                </ListGroup.Item>
+            ))}
+        </ListGroup>
 
         </div>
     );
