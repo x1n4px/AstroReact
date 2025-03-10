@@ -44,8 +44,32 @@ const MapChart = ({ data, activePopUp = true }) => {
         return { centerLat, centerLon, zoom: zoomLevel };
     }, [data]);
 
-    // Crear un array de coordenadas para la Polyline
-    const polylinePoints = data.map((punto) => [punto.lat, punto.lon]);
+     const polylinePoints = data.map((punto) => [punto.lat, punto.lon]);
+
+    // Crear un array de segmentos de Polyline con colores basados en la pendiente
+    const polylineSegments = useMemo(() => {
+        if (!data || data.length < 2) return [];
+
+        const segments = [];
+        for (let i = 0; i < data.length - 1; i++) {
+            const start = data[i];
+            const end = data[i + 1];
+            const heightDiff = end.height - start.height;
+
+            let color = 'blue'; // Color predeterminado
+            if (heightDiff > 0) {
+                color = 'green'; // Pendiente ascendente
+            } else if (heightDiff < 0) {
+                color = 'red'; // Pendiente descendente
+            }
+
+            segments.push({
+                positions: [[start.lat, start.lon], [end.lat, end.lon]],
+                color: color,
+            });
+        }
+        return segments;
+    }, [data]);
 
     return (
         <MapContainer center={[centerLat, centerLon]} zoom={zoom} style={{ width: '100%', height: '500px' }} scrollWheelZoom={false} >
@@ -53,10 +77,10 @@ const MapChart = ({ data, activePopUp = true }) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            {/* Polyline para conectar los puntos */}
-            {polylinePoints.length > 1 && (
-                <Polyline positions={polylinePoints} color="blue" />
-            )}
+            {/* Polyline para conectar los puntos con colores basados en la pendiente */}
+            {polylineSegments.map((segment, index) => (
+                <Polyline key={index} positions={segment.positions} color={segment.color} />
+            ))}
             {/* Marcadores */}
             {data.map((punto, index) => (
                 <Marker
@@ -68,8 +92,6 @@ const MapChart = ({ data, activePopUp = true }) => {
                         <Popup>
                             <div>
                                 <p>Altura: {punto.height}km</p>
-                               
-                                 
                             </div>
                         </Popup>
                     )}

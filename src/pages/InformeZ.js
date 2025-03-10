@@ -2,6 +2,7 @@ import React from 'react';
 import LinkMap from '../components/chart/LinkMap';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 import { color } from 'd3';
+import PendienteChart from '../components/chart/Pending';
 
 const InformeZ = () => {
     // Datos de ejemplo del informe Z
@@ -67,6 +68,7 @@ const InformeZ = () => {
             <Row>
                 <Col xs={12} md={6} className="mb-4 mb-md-0">
                     <LinkMap data={data} />
+                    <PendienteChart data={data} />
                 </Col>
                 <Col xs={12} md={6}>
                     <Table striped bordered hover responsive>

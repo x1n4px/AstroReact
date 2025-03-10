@@ -7,6 +7,8 @@ import BarChart from '../components/BarChart';
 import RadarChart from '../components/chart/RadarChart';
 import BrushableScatterplot from '../components/chart/BushableScatterplot';
 import LinkMap from '../components/chart/LinkMap'
+import PendienteChart from '../components/chart/Pending';
+
 
 const Home = () => {
 
@@ -70,29 +72,50 @@ const Home = () => {
     { nombre: 'Bólido B', a: 3.2, e: 0.5, i: 10, Omega: 60, w: 140 }
   ]
 
+  // Datos de ejemplo para el mapa
   const data = [
     {
-      "id": 1,
-      "lat": 40.4168,
-      "lon": -3.7038,
-      "title": "Punto 1 (Madrid)",
-      "date": "Tue Oct 27 2020 10:15:23 GMT+0100 (Central European Standard Time)",
-      "video": ""
+        id: 1,
+        lat: 40.4168,
+        lon: -3.7038,
+        title: 'Estación 1',
+        date: '2023-10-27',
+        video: '',
+        height: 83
     },
     {
-      "id": 2,
-      "lat": 40.4168,
-      "lon": -2.2038,
-      "title": "Punto 2 (Barcelona)",
-      "date": "Wed Mar 15 2017 14:28:57 GMT+0100 (Central European Standard Time)",
-      "video": ""
-    }
-  ]
+        id: 2,
+        lat: 41.3851,
+        lon: 2.1734,
+        title: 'Estación 2',
+        date: '2023-10-27',
+        video: '',
+        height: 30
+    },
+];
 
 
   return (
     <div className="app-container">
       <div className="cardx">
+
+      <div className="box2" style={{ position: 'relative' }}>
+            <div className="box" style={{ marginBottom: '1rem', position: 'relative', overflow: 'hidden' }}>
+                <div className="map-title absolute top-10 left-0 z-10">
+                    Último bólido registrado
+                </div>
+                <LinkMap data={data} />
+                <Link className="button" to="/informe-bolido" style={{marginTop: '10px'}}>
+                    Ver informe completo
+                </Link>
+
+                <div style={{ position: 'absolute', bottom: '100px', right: '20px',width: '300px', height: 'auto', zIndex:'9999', backgroundColor:'white', borderColor: 'black' , borderWidth: '1px'}}>
+                <PendienteChart data={data} />
+            </div>
+            </div>
+             
+            
+        </div>
 
         <div className="box2" style={{ marginBottom: '1rem', position: 'relative', overflow: 'hidden' }}>
         </div>
@@ -130,22 +153,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid">
-          <div className="box">
-            <div className='close-box mt-4 w-60'>
-              <BrushableScatterplot data={puntosLocales} />
-            </div>
-          </div>
-          <div className="box" style={{ marginBottom: '1rem', position: 'relative', overflow: 'hidden' }}>
-            <div className="map-title absolute top-10 left-0 z-10">
-             Último bólido registrado
-            </div>
-            <LinkMap data={data} />
-            <Link className="button" to="/informe-bolido">
-              Ver informe completo
-            </Link>
-          </div>
-        </div>
+        
 
         {/* Botón de redirección */}
         {/* <div style={{ marginTop: '1rem', textAlign: 'center' }}>
